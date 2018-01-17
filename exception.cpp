@@ -10,3 +10,8 @@ using namespace std;
 li::exception::exception(int _code, const string &_mess)
 	:code(_code), mess(_mess)
 {}
+
+int li::exception::getcode()
+{
+	return code;
+}
