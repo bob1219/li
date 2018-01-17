@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <list>
 #include <exception>
+#include <iomanip>
 
 // Header
 #include "class.h"
@@ -77,7 +78,7 @@ int main(int argc, char **argv)
 	}
 	catch(li::exception &e)
 	{
-		cerr << "error code:\t" << e.getcode() << endl;
+		cerr << "error code:\t" << hex << e.getcode() << dec << endl;
 		cerr << "error message:\t" << e.getmess() << endl;
 		return EXIT_FAILURE;
 	}
