@@ -15,3 +15,8 @@ int li::exception::getcode()
 {
 	return code;
 }
+
+const string &li::exception::getmess()
+{
+	return mess;
+}
