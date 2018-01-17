@@ -3,6 +3,7 @@
 
 // Standard Library
 #include <iostream>
+#include <string>
 
 // Header
 #include "constant.h"
@@ -14,6 +15,17 @@ namespace li
 	inline void PrintVersion()
 	{
 		std::cout << "li Version " << VERSION << std::endl;
+	}
+
+	namespace command
+	{
+		void w(const std::string &filename);
+		void e(int lineno);
+		void r(int lineno);
+		void i(int lineno);
+		void es(int lineno);
+		void is(int lineno);
+		void o(const std::string &filename);
 	}
 }
 
