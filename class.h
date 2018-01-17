@@ -9,7 +9,7 @@ namespace li
 	class exception
 	{
 	public:
-		exception(int code, const std::string &mess);
+		exception(int _code, const std::string &_mess);
 		int			getcode();
 		const std::string	&getmess();
 
