@@ -16,13 +16,13 @@ using namespace std;
 using namespace li;
 
 // Gloval variable
-list<string> lines;
+list<string>	lines;
+string		filename;
 
 int main(int argc, char **argv)
 {
 	try
 	{
-		string filename;
 		if(argc == 1)
 		{
 			cout << "open file?(Y/N)" << endl;
