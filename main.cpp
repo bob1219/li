@@ -17,8 +17,11 @@ using namespace std;
 using namespace li;
 
 // Gloval variable
-list<string>	lines;
-string		filename;
+namespace li
+{
+	list<string>	lines;
+	string		filename;
+}
 
 int main(int argc, char **argv)
 {
