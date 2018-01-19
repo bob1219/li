@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <string>
 
 // Header
 #include "extern.h"
@@ -20,4 +21,18 @@ void li::command::w(const string &filename)
 
 	for(auto line : lines)
 		ofs << line << endl;
+}
+
+void li::command::e(int lineno)
+{
+	auto line = lines.begin();
+	line += lineno;
+
+	cout << "before: " << *line << endl;
+
+	string after;
+	cout << "after: ";
+	getline(cin, after);
+
+	*line = after;
 }
