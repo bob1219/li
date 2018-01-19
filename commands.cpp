@@ -37,9 +37,7 @@ void li::command::e(int lineno)
 
 void li::command:r(int lineno)
 {
-	auto line = lines.begin();
-	line += lineno;
-
+	auto line = lines.begin() + lineno;
 	lines.erase(line);
 }
 
