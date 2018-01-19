@@ -43,6 +43,7 @@ void li::CommandLine()
 		{
 			int lineno;
 			sscanf(command, "e %d", &lineno);
+			lineno--;
 
 			command::e(lineno);
 		}
@@ -50,6 +51,7 @@ void li::CommandLine()
 		{
 			int lineno;
 			sscanf(command, "r %d", &lineno);
+			lineno--;
 
 			command::r(lineno);
 		}
@@ -57,6 +59,7 @@ void li::CommandLine()
 		{
 			int lineno;
 			sscanf(command, "i %d", &lineno);
+			lineno--;
 
 			command::i(lineno);
 		}
@@ -64,6 +67,7 @@ void li::CommandLine()
 		{
 			int lineno;
 			sscanf(command, "es %d", &lineno);
+			lineno--;
 
 			command::es(lineno);
 		}
@@ -71,6 +75,7 @@ void li::CommandLine()
 		{
 			int lineno;
 			sscanf(command, "is %d", &lineno);
+			lineno--;
 
 			command::is(lineno);
 		}
@@ -95,6 +100,7 @@ void li::CommandLine()
 		{
 			int lineno;
 			sscanf(command, "p %d", &lineno);
+			lineno--;
 
 			command::p(lineno, lineno);
 		}
