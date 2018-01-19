@@ -104,3 +104,19 @@ void li::command::is(int lineno)
 		line++;
 	}
 }
+
+void li::command::o(const string &filename)
+{
+	ifstream ifs(filename);
+	if(ifs.fail())
+	{
+		cerr << "Error: Cannot open file." << endl;
+		return;
+	}
+
+	lines.clear();
+
+	string line;
+	while(getline(ifs, line))
+		lines.push_back(line);
+}
