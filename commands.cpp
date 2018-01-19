@@ -81,3 +81,26 @@ void li::command::es(int lineno)
 		line++;
 	}
 }
+
+void li::command::is(int lineno)
+{
+	cout << "fin: @" << endl;
+	cout << endl;
+
+	auto line = lines.begin();
+	line += lineno + 1;
+
+	for(unsigned int i = lineno + 1 ;; i++)
+	{
+		string s;
+		cout << i << ":\t";
+		getline(cin, s);
+		if(s == "@")
+			break;
+
+		lines.insert(line, s);
+
+		cout << endl;
+		line++;
+	}
+}
