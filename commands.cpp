@@ -81,8 +81,7 @@ void li::command::is(int lineno)
 	cout << "fin: @" << endl;
 	cout << endl;
 
-	auto line = lines.begin();
-	line += lineno + 1;
+	auto line = lines.begin() + lineno + 1;
 
 	for(unsigned int i = lineno + 1 ;; i++)
 	{
