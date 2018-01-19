@@ -120,3 +120,14 @@ void li::command::o(const string &filename)
 	while(getline(ifs, line))
 		lines.push_back(line);
 }
+
+void li::command::p(int from, int to)
+{
+	int i = 0;
+	for(auto line : lines)
+	{
+		if(i >= from && i <= to)
+			cout << i << ":\t" << line << endl;
+		i++;
+	}
+}
