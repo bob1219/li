@@ -43,8 +43,7 @@ void li::command:r(int lineno)
 
 void li::command::i(int lineno)
 {
-	auto line = lines.begin();
-	line += lineno + 1;
+	auto line = lines.begin() + lineno + 1;
 
 	string s;
 	cout << "insert string: ";
