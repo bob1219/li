@@ -56,3 +56,28 @@ void li::command::i(int lineno)
 
 	lines.insert(line, s);
 }
+
+void li::command::es(int lineno)
+{
+	cout << "fin: @" << endl;
+	cout << endl;
+
+	auto line = lines.begin();
+	line += lineno;
+
+	for(unsigned int i = lineno + 1 ;; i++)
+	{
+		cout << "before(" << i << "): " << *line << endl;
+
+		string after;
+		cout << "after: ";
+		getline(cin, after);
+		if(after == "@")
+			break;
+
+		*line = after;
+
+		cout << endl;
+		line++;
+	}
+}
