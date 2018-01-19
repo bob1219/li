@@ -11,6 +11,7 @@
 namespace li
 {
 	void CommandLine();
+	void CommandProcess(const std::string &command);
 
 	inline void PrintVersion()
 	{
