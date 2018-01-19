@@ -24,8 +24,7 @@ void li::command::w(const string &filename)
 
 void li::command::e(int lineno)
 {
-	auto line = lines.begin();
-	line += lineno;
+	auto line = lines.begin() + lineno;
 
 	cout << "before: " << *line << endl;
 
