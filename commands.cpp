@@ -36,3 +36,11 @@ void li::command::e(int lineno)
 
 	*line = after;
 }
+
+void li::command:r(int lineno)
+{
+	auto line = lines.begin();
+	line += lineno;
+
+	lines.erase(line);
+}
