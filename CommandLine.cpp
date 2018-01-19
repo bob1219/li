@@ -89,6 +89,24 @@ void li::CommandLine()
 
 			command::o(_filename);
 		}
+		else if(command == "p")
+			command::p(0, lines.size() - 1);
+		else if(regex_match(command, regex("p \\d+")))
+		{
+			int lineno;
+			sscanf(command, "p %d", &lineno);
+
+			command::p(lineno, lineno);
+		}
+		else if(regex_match(command, regex("p \\d+ \\d+")))
+		{
+			int from, to;
+			sscanf(command, "p %d %d", &from, &to);
+			from--;
+			to--;
+			
+			command::p(from, to);
+		}
 		else if(command == "q")
 			exit(EXIT_SUCCESS);
 		else

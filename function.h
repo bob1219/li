@@ -26,6 +26,7 @@ namespace li
 		void es(int lineno);
 		void is(int lineno);
 		void o(const std::string &filename);
+		void p(int from, int to);
 	}
 }
 
