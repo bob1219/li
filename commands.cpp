@@ -44,3 +44,15 @@ void li::command:r(int lineno)
 
 	lines.erase(line);
 }
+
+void li::command::i(int lineno)
+{
+	auto line = lines.begin();
+	line += lineno + 1;
+
+	string s;
+	cout << "insert string: ";
+	getline(cin, s);
+
+	lines.insert(line, s);
+}
