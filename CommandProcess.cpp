@@ -100,6 +100,13 @@ void li::CommandProcess(const string &command)
 
 		command::p(--from, --to);
 	}
+	else if(regex_match(command, regex("c \\d+ \\d+")))
+	{
+		int from, to;
+		sscanf(command.c_str(), "c %d %d", &from, &to);
+
+		command::c(--from, --to);
+	}
 	else if(command == "q") // quit
 	{
 		if(!IsSaved)

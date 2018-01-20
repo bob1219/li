@@ -206,3 +206,32 @@ void li::command::p(int from, int to)
 		i++;
 	}
 }
+
+void li::command::c(int from, int to)
+{
+	if(lines.empty())
+	{
+		cerr << "Error: Lines not found." << endl;
+		return;
+	}
+
+	if(lines.size() > from + 1)
+	{
+		cerr << "Error: From line not found." << endl;
+		return;
+	}
+
+	auto from_i = lines.begin();
+	for(unsigned int i = 1 ; i <= from ; i++)
+		from_i++;
+
+	if(lines.size() > to + 1)
+		while(lines.size() < from)
+			push_back("");
+
+	auto to_i = lines.begin();
+	for(unsigned int i = 1 ; i <= to ; i++)
+		to_i++;
+
+	*to_i = *from_i;
+}
