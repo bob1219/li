@@ -5,6 +5,7 @@
 
 // Header
 #include "extern.h"
+#include "function.h"
 
 // using
 using namespace std;
@@ -24,7 +25,9 @@ void li::command::w(const string &filename)
 
 void li::command::e(int lineno)
 {
-	auto line = lines.begin() + lineno;
+	auto line = lines.begin();
+	for(unsigned int i = 1 ; i <= lineno ; i++)
+		line++;
 
 	cout << "before: " << *line << endl;
 
@@ -35,15 +38,21 @@ void li::command::e(int lineno)
 	*line = after;
 }
 
-void li::command:r(int lineno)
+void li::command::r(int lineno)
 {
-	auto line = lines.begin() + lineno;
+	auto line = lines.begin();
+	for(unsigned int i = 1 ; i <= lineno ; i++)
+		line++;
+
 	lines.erase(line);
 }
 
 void li::command::i(int lineno)
 {
-	auto line = lines.begin() + lineno + 1;
+	auto line = lines.begin();
+	for(unsigned int i = 1 ; i <= lineno ; i++)
+		line++;
+	line++;
 
 	string s;
 	cout << "insert string: ";
@@ -57,7 +66,9 @@ void li::command::es(int lineno)
 	cout << "fin: @" << endl;
 	cout << endl;
 
-	auto line = lines.begin() + lineno;
+	auto line = lines.begin();
+	for(unsigned int i = 1 ; i <= lineno ; i++)
+		line++;
 
 	for(unsigned int i = lineno + 1 ;; i++)
 	{
@@ -81,7 +92,10 @@ void li::command::is(int lineno)
 	cout << "fin: @" << endl;
 	cout << endl;
 
-	auto line = lines.begin() + lineno + 1;
+	auto line = lines.begin();
+	for(unsigned int i = 1 ; i <= lineno ; i++)
+		line++;
+	line++;
 
 	for(unsigned int i = lineno + 1 ;; i++)
 	{
