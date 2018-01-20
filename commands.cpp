@@ -227,7 +227,7 @@ void li::command::c(int from, int to)
 
 	if(lines.size() > to + 1)
 		while(lines.size() < from)
-			push_back("");
+			lines.push_back("");
 
 	auto to_i = lines.begin();
 	for(unsigned int i = 1 ; i <= to ; i++)
