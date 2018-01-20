@@ -71,11 +71,17 @@ int main(int argc, char **argv)
 		{
 			ifstream ifs(filename);
 			if(ifs.fail())
-				throw li::exception(0x1, "Cannot open file");
-
-			string line;
-			while(getline(ifs, line))
-				lines.push_back(line);
+			{
+				ofstream fs(filename);
+				if(fs.fail())
+					throw li::exception(0x1, "Cannot open file");
+			}
+			else
+			{
+				string line;
+				while(getline(ifs, line))
+					lines.push_back(line);
+			}
 		}
 
 		PrintVersion();
