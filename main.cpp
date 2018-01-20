@@ -35,6 +35,7 @@ int main(int argc, char **argv)
 			{
 				cout << ">";
 				int YorN = getchar();
+				scanf("%*c");
 				if(YorN == EOF)
 					continue;
 
@@ -56,6 +57,7 @@ int main(int argc, char **argv)
 
 				break;
 			}
+			cout << endl;
 		}
 		else if(argc == 2)
 			filename = argv[1];
