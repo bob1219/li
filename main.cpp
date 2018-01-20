@@ -33,11 +33,11 @@ int main(int argc, char **argv)
 			while(true)
 			{
 				cout << ">";
-				char YorN = getchar();
+				int YorN = getchar();
 				if(YorN == EOF)
 					continue;
 
-				YorN = static_cast<char>(tolower(static_cast<int>(YorN)));
+				YorN = tolower(YorN);
 				switch(YorN)
 				{
 				case 'y':
