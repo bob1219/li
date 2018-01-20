@@ -29,13 +29,24 @@ void li::command::e(int lineno)
 	for(unsigned int i = 1 ; i <= lineno ; i++)
 		line++;
 
-	cout << "before: " << *line << endl;
+	string before = "";
+	if(!lines.empty())
+		before = *line;
+
+	cout << "before:\t" << before << endl;
 
 	string after;
-	cout << "after: ";
+	cout << "after:\t";
 	getline(cin, after);
 
-	*line = after;
+	if(lines.empty())
+	{
+		while(lines.size() < lineno)
+			lines.push_back("");
+		lines.push_back(after);
+	}
+	else
+		*line = after;
 }
 
 void li::command::r(int lineno)
@@ -70,17 +81,30 @@ void li::command::es(int lineno)
 	for(unsigned int i = 1 ; i <= lineno ; i++)
 		line++;
 
+	bool IsEmpty = lines.empty();
 	for(unsigned int i = lineno + 1 ;; i++)
 	{
-		cout << "before(" << i << "): " << *line << endl;
+		string before = "";
+		if(!IsEmpty)
+			before = *line;
+
+		cout << "before(" << i << "):\t" << before << endl;
 
 		string after;
-		cout << "after: ";
+		cout << "after:\t\t";
 		getline(cin, after);
 		if(after == "@")
 			break;
 
-		*line = after;
+		if(IsEmpty)
+		{
+			if(lines.empty())
+				while(lines.empty() < lineno)
+					lines.push_back("");
+			lines.push_back(after);
+		}
+		else
+			*line = after;
 
 		cout << endl;
 		line++;
@@ -97,7 +121,7 @@ void li::command::is(int lineno)
 		line++;
 	line++;
 
-	for(unsigned int i = lineno + 1 ;; i++)
+	for(unsigned int i = lineno + 2 ;; i++)
 	{
 		string s;
 		cout << i << ":\t";
@@ -107,7 +131,6 @@ void li::command::is(int lineno)
 
 		lines.insert(line, s);
 
-		cout << endl;
 		line++;
 	}
 }
@@ -134,7 +157,7 @@ void li::command::p(int from, int to)
 	for(auto line : lines)
 	{
 		if(i >= from && i <= to)
-			cout << i << ":\t" << line << endl;
+			cout << i + 1 << ":\t" << line << endl;
 		i++;
 	}
 }
