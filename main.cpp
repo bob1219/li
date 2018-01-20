@@ -1,5 +1,6 @@
 // Standard Library
 #include <iostream>
+#include <fstream>
 #include <cstdio>
 #include <cctype>
 #include <string>
@@ -21,6 +22,7 @@ namespace li
 {
 	list<string>	lines;
 	string		filename;
+	bool		IsSaved = true;
 }
 
 int main(int argc, char **argv)
@@ -34,6 +36,7 @@ int main(int argc, char **argv)
 			{
 				cout << ">";
 				int YorN = getchar();
+				scanf("%*c");
 				if(YorN == EOF)
 					continue;
 
@@ -55,6 +58,7 @@ int main(int argc, char **argv)
 
 				break;
 			}
+			cout << endl;
 		}
 		else if(argc == 2)
 			filename = argv[1];
@@ -68,11 +72,17 @@ int main(int argc, char **argv)
 		{
 			ifstream ifs(filename);
 			if(ifs.fail())
-				throw li::exception(0x1, "Cannot open file");
-
-			string line;
-			while(getline(ifs, line))
-				lines.push_back(line);
+			{
+				ofstream fs(filename);
+				if(fs.fail())
+					throw li::exception(0x1, "Cannot open file");
+			}
+			else
+			{
+				string line;
+				while(getline(ifs, line))
+					lines.push_back(line);
+			}
 		}
 
 		PrintVersion();
