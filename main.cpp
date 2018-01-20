@@ -22,6 +22,7 @@ namespace li
 {
 	list<string>	lines;
 	string		filename;
+	bool		IsSaved = true;
 }
 
 int main(int argc, char **argv)

@@ -9,6 +9,7 @@ namespace li
 {
 	extern std::list<std::string>	lines;
 	extern std::string		filename;
+	extern bool			IsSaved;
 }
 
 #endif

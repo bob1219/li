@@ -101,7 +101,38 @@ void li::CommandProcess(const string &command)
 		command::p(--from, --to);
 	}
 	else if(command == "q") // quit
+	{
+		if(!IsSaved)
+		{
+			cout << "Do you want to save?(Y/N)" << endl;
+			while(true)
+			{
+				cout << ">";
+				int YorN = getchar();
+				scanf("%*c");
+				if(YorN == EOF)
+					continue;
+
+				YorN = tolower(YorN);
+				switch(YorN)
+				{
+				case 'y':
+					command::w(filename);
+					break;
+
+				case 'n':
+					break;
+
+				default:
+					continue;
+				}
+
+				break;
+			}
+		}
+
 		exit(EXIT_SUCCESS);
+	}
 	else
 		throw li::exception(0x2, "unknown command");
 

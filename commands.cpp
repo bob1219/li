@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdio>
+#include <cctype>
 
 // Header
 #include "extern.h"
@@ -21,6 +23,8 @@ void li::command::w(const string &filename)
 
 	for(auto line : lines)
 		ofs << line << endl;
+
+	IsSaved = true;
 }
 
 void li::command::e(int lineno)
@@ -47,6 +51,8 @@ void li::command::e(int lineno)
 	}
 	else
 		*line = after;
+
+	IsSaved = false;
 }
 
 void li::command::r(int lineno)
@@ -56,6 +62,8 @@ void li::command::r(int lineno)
 		line++;
 
 	lines.erase(line);
+
+	IsSaved = false;
 }
 
 void li::command::i(int lineno)
@@ -70,6 +78,8 @@ void li::command::i(int lineno)
 	getline(cin, s);
 
 	lines.insert(line, s);
+
+	IsSaved = false;
 }
 
 void li::command::es(int lineno)
@@ -109,6 +119,8 @@ void li::command::es(int lineno)
 		cout << endl;
 		line++;
 	}
+
+	IsSaved = false;
 }
 
 void li::command::is(int lineno)
@@ -133,10 +145,41 @@ void li::command::is(int lineno)
 
 		line++;
 	}
+
+	IsSaved = false;
 }
 
 void li::command::o(const string &filename)
 {
+	if(!IsSaved)
+	{
+		cout << "Do you want to save?(Y/N)" << endl;
+		while(true)
+		{
+			cout << ">";
+			int YorN = getchar();
+			scanf("%*c");
+			if(YorN == EOF)
+				continue;
+
+			YorN = tolower(YorN);
+			switch(YorN)
+			{
+			case 'y':
+				w(filename);
+				break;
+
+			case 'n':
+				break;
+
+			default:
+				continue;
+			}
+
+			break;
+		}
+	}
+
 	ifstream ifs(filename);
 	if(ifs.fail())
 	{
@@ -149,6 +192,8 @@ void li::command::o(const string &filename)
 	string line;
 	while(getline(ifs, line))
 		lines.push_back(line);
+
+	IsSaved = true;
 }
 
 void li::command::p(int from, int to)
