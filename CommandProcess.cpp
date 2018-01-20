@@ -14,7 +14,10 @@ using namespace std;
 void li::CommandProcess(const string &command)
 {
 	if(command == "f") // Print current filename
-		cout << filename << endl;
+	{
+		if(filename != "")
+			cout << filename << endl;
+	}
 	else if(command == "w") // Write to current file
 	{
 		if(filename == "")
